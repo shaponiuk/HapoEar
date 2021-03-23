@@ -1,14 +1,12 @@
-import sounddevice as sd
-import numpy as np
+import simple_sine_question, cli
 
 def main():
-    sr = 48000
-    n_seconds = 3
-    freq = 500
-    step = 500 * np.pi * n_seconds / (sr * n_seconds)
-    ar = np.arange(0, freq * np.pi, step)
-    sound = np.sin(ar)
-    sd.play(sound, sr)
+    def f():
+        return simple_sine_question.simple_sine_interval_question(14, 70, 15)
+    
+    cli.simple_ask_loop(f)
+    _ = input()
+
 
 if __name__ == '__main__':
     main()
